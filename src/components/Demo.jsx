@@ -69,8 +69,8 @@ const Demo = () => {
                     <div key={`link-${index}`}
                     onClick={()=> setArticle(item)}
                     className="link_card">
-                    <div className="copy_btn">
-                        <img src={copy} alt="copy icon" className="w-[40%] h-[40%] object-contain" />
+                    <div className="copy_btn" onClick={()=> handleCopy(item.url)}>
+                        <img src={copied === item.url ? tick : copy} alt="copy icon" className="w-[40%] h-[40%] object-contain" />
                     </div>
                     <p className="flex-1 font-satoshi text-blue-700 text-sm truncate">{item.url}</p>
                     </div>
@@ -90,8 +90,15 @@ const Demo = () => {
                                 <h2 className="font-satoshi font-bold text-gray-600 text-xl"> 
                                     Article <span className="blue_gradient">Summary</span>
                                 </h2>
+                                
                                 <div className="summary_box">
                                     <p className="font-inter font-medium text-sm text-gray-700">{article.summary} </p>
+    
+                                </div>
+                                <div className="flex mx-auto my-auto text-gray-300 bg-blue-500 rounded-full font-satoshi text-xs ">
+                                <button className="gap-2 my-1 mx-1 flex " onClick={()=> handleCopy(article.summary)}>
+                                 {copied === article.summary ? "Copied" : "Copy Summary"}
+                                </button>
                                 </div>
                             </div>
                         )) }
